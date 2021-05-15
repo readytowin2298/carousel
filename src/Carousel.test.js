@@ -40,3 +40,11 @@ test("works when you click on the left arrow", function() {
   expect(queryByAltText("Photo by Richard Pasquarella on Unsplash")).toBeInTheDocument();
   expect(queryByAltText("Photo by Pratik Patel on Unsplash")).not.toBeInTheDocument();
 });
+
+test("Carousel is circular", function() {
+  const { getByTestId, queryByAltText } = render(<Carousel />);
+  const leftArrow = getByTestId("left-arrow");
+  
+  fireEvent.click(leftArrow);
+  expect(queryByAltText("Photo by Josh Post on Unsplash")).toBeInTheDocument();
+})
